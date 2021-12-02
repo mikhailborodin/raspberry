@@ -1,9 +1,8 @@
-import troykahat
-from prometheus_client import Gauge, start_http_server
 from time import sleep
+import troykahat
+
 
 ap = troykahat.analog_io()
-gh = Gauge('humidity_ground', 'Humidity ground')
 
 
 class Device:
@@ -33,16 +32,3 @@ class LED(Device):
         ap.analogWrite(self.PIN, 0.25)
         sleep(0.2)
         ap.analogWrite(self.PIN, 0)
-
-
-if __name__ == '__main__':
-    start_http_server(8000)
-    sensor = Sensor()
-    led = LED()
-    while True:
-        value = sensor.read()
-        gh.set(value)
-        if value < 0.1:
-            led.blink()
-        sensor.turn_off()
-        sleep(30)
