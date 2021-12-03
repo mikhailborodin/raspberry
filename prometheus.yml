@@ -21,4 +21,4 @@ rule_files:
 scrape_configs:
   - job_name: "Metrics"
     static_configs:
-      - targets: ["host.docker.internal:8000"]
+      - targets: ["192.168.31.19:8000"]

@@ -18,14 +18,3 @@ services:
       - $PWD/data:/var/lib/grafana
     depends_on:
       - prometheus
-
-  script:
-    restart: always
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    volumes:
-      - .:/code
-    ports:
-      - 8000:8000
-    command: python src/main.py
