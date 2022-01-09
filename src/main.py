@@ -12,7 +12,7 @@ if __name__ == '__main__':
     led = LED()
     while True:
         value = sensor.read()
-        gh.set(value)
+        gh.set(round(value, 2))
         if value < CRITICAL_VALUE:
             led.blink()
         sensor.turn_off()
